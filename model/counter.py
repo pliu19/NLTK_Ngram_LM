@@ -25,7 +25,7 @@ def count_ngrams(order, vocabulary, *training_texts, **counter_kwargs):
     counter = NgramCounter(order, vocabulary, **counter_kwargs)
     # for text in training_texts:
     #     counter.train_counts(text)
-    counter.train_counts(text)
+    counter.train_counts(training_texts)
     return counter
 
 

@@ -105,7 +105,18 @@ class MLENgramModel(BaseNgramModel):
         - context is expected to be something reasonably convertible to a tuple
         """
         context = self.check_context(context)
-        return self.ngrams[context].freq(word)
+        
+        if len(context) == self._order - 1:
+            
+            # print("standard score with highest order")
+            
+            return self.ngrams[context].freq(word)
+        
+        else:
+            
+            # print("accessing %d-gram model" %len(context))
+            
+            return self._ngrams[len(context)+1][context].freq(word)
 
 
 @compat.python_2_unicode_compatible
